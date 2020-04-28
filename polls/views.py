@@ -14,11 +14,12 @@ def index(request):
 
 def detail(request, question_id):
 
-    try:
-        question = Question.objects.get(id=question_id)
-    except Question.DoesNotExist:
-        raise Http404('question does not find')
+    # try:
+    #     question = Question.objects.get(id=question_id)
+    # except Question.DoesNotExist:
+    #     raise Http404('question does not find')
 
+    question = get_object_or_404(Question, id=question_id)
     return render(request, 'polls/detail.html', context=dict(question=question))
 
 
